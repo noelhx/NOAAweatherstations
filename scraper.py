@@ -1,16 +1,14 @@
 # This is a template for a Python scraper on Morph (https://morph.io)
 # including some code snippets below that you should find helpful
 
-# import scraperwiki
-# import lxml.html
-#
-# # Read in a page
+import scraperwiki
+import lxml.html
+
+# # Read in a page or data
 # html = scraperwiki.scrape("http://foo.com")
-#
 # # Find something on the page using css selectors
 # root = lxml.html.fromstring(html)
 # root.cssselect("div[align='left']")
-#
 # # Write out to the sqlite database using scraperwiki library
 # scraperwiki.sqlite.save(unique_keys=['name'], data={"name": "susan", "occupation": "software developer"})
 #
@@ -22,13 +20,12 @@
 # is that your final data is written to an Sqlite database called data.sqlite in the current working directory which
 # has at least a table called data.
 
-
 #########################################################
                 
-##NOAA weather data extract
+# #NOAA weather data extract
 ##  M Boldin  Sept 2014 -- Dec 2014
 
-## Extracts gz wiht daily data from ftp://ftp.ncdc.noaa.gov/pub/data/gsod/ 
+## Extracts gz with daily data from ftp://ftp.ncdc.noaa.gov/pub/data/gsod/ 
 ## Converts to csv file with columns
 #          "Station", "Year", "Month", "Day", 
 #          "MeanTemp", "NTempObs", "DewPoint", "NDewPointObs", 
@@ -46,19 +43,6 @@
 ##    Need USAF &  WBAN codes
 ##      "ftp://ftp.ncdc.noaa.gov/pub/data/inventories/ISH-HISTORY.TXT )\n")            
                 
-## Dec 2014  
-##   --tested Station find & Download using USAF-WBAN codes
-##   --next check parse of csv 
-##   --each year 1 minute approx
-##   --skipped SJU San Juan PR
-##             HNL Honolulu,
-##             FLL Ft Lauderdaile problem acodes[20]
-                
-##   ck snow depth =/ snowfall 
-##   ck precip flag  = G
-##    download with station letter code -->  Kxxx-122335566-344679
-##    by year  ##   
-
 ############################################################
 
 import os
@@ -361,6 +345,6 @@ if True:
             if scall not in ('HNL', 'SJU'):
                 print scodes2, ax2[-1]  
                 year1= 2013
-                NOAAdownload(usaf, wban, scall, year1)
+                #NOAAdownload(usaf, wban, scall, year1)
             dt2= dt.now()
             print '%s  | %s  seconds: %-4s' % (dt2.strftime('%Y-%m-%d %H:%M:%S'), (dt2-dt1), (dt2-dt1).seconds )
